@@ -531,3 +531,26 @@ function checkAnswer(inputEl) {
 function toggleAnswers() {
     document.body.classList.toggle('show-answers');
 }
+
+// --- QUIZ BOTTOM CONTROLS LOGIC --- //
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+function restartKanaQuiz() {
+    generateKanaQuiz(false); // Resets inputs and restores sequential order for standard sets
+    scrollToTop();
+}
+
+function restartNumbersQuiz() {
+    generateNumbersQuiz(false); // Resets inputs and restores sequential PDF order
+    scrollToTop();
+}
+
+function restartTimeQuiz() {
+    generateTimeQuiz(false); // Resets inputs and restores sequential PDF time order
+    scrollToTop();
+}

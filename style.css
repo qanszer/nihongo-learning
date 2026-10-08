@@ -367,6 +367,17 @@ input.incorrect {
     opacity: 1;
 }
 
+/* Bottom Controls */
+.bottom-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
 /* Reviewer Pages */
 .reviewer-table {
     width: 100%;
