@@ -1,6 +1,6 @@
 :root {
     --primary: #bf616a;
-    --primary-hover: #bf616a;
+    --primary-hover: #d06f79;
     --secondary: #2b313c;
     --bg-color: #252a34;
     --card-bg: #2b313c;
@@ -120,7 +120,7 @@ body {
 main {
     flex: 1;
     padding: 25px;
-    max-width: 1200px;
+    max-width: 1600px;
     width: 100%;
     margin: 0 auto;
 }
@@ -149,6 +149,12 @@ main {
     color: var(--text-muted);
 }
 
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
 .section-title {
     font-size: 18px;
     font-weight: bold;
@@ -156,6 +162,7 @@ main {
     margin: 25px 0 15px 0;
     border-left: 4px solid var(--primary);
     padding-left: 10px;
+    
 }
 
 .dashboard-grid {
@@ -208,11 +215,11 @@ main {
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
-    transition: opacity 0.2s;
+    transition: background-color 0.2s;
 }
 
 .primary-btn:hover {
-    opacity: 0.9;
+    background-color: var(--primary-hover);
 }
 
 #kana-quiz-title, .quiz-title {
@@ -284,14 +291,15 @@ button:hover:not(.action-btn):not(.active) {
 /* Quiz Cards Grid */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); /* Increased from 160px for wider cards */
+    gap: 20px; /* Slightly increased gap for larger cards */
+    align-items: start;
 }
 
 .card {
     background-color: var(--card-bg);
-    border-radius: 8px;
-    padding: 18px 12px;
+    border-radius: 10px;
+    padding: 24px 16px; /* Increased padding */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -299,13 +307,15 @@ button:hover:not(.action-btn):not(.active) {
 }
 
 .prompt-text {
-    font-size: 26px;
+    font-size: 32px; /* Reduced from 26px so long kanji/time strings fit cleanly */
     font-weight: bold;
     margin-bottom: 12px;
-    height: 44px;
+    height: 48px; /* Fixed height for 1-2 lines of prompt text */
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    word-break: break-word;
 }
 
 input {
@@ -334,27 +344,25 @@ input.incorrect {
 
 .answer-hint {
     margin-top: 8px;
-    font-size: 12px;
+    font-size: 11px; /* Slightly smaller for long romaji variations */
     color: var(--primary);
     font-weight: bold;
-    min-height: 15px;
+    height: 36px; /* Fixed height so all cards reserve identical answer space */
     opacity: 0;
     transition: opacity 0.2s;
     word-break: break-word;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto; /* Handles extremely long romaji variations smoothly */
 }
 
 .show-answers .answer-hint {
     opacity: 1;
 }
 
-/* Reader Pages (HTML Reviewers) */
-.reviewer-body {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 20px;
-}
-
+/* Reviewer Pages */
 .reviewer-table {
     width: 100%;
     border-collapse: collapse;

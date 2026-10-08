@@ -17,11 +17,9 @@
     <!-- Collapsible Sidebar -->
     <aside id="sidebar" class="sidebar">
         <div class="sidebar-header">
-            <span>Menu</span>
             <button class="close-btn" onclick="toggleSidebar()">✕</button>
         </div>
         <nav class="sidebar-nav">
-            <button onclick="switchView('dashboard')">Dashboard</button>
             <button onclick="switchView('hiragana')">Hiragana Quiz</button>
             <button onclick="switchView('katakana')">Katakana Quiz</button>
             <button onclick="switchView('numbers')">Numbers Quiz</button>
@@ -40,56 +38,58 @@
                 <p>Select a quiz category below or review study materials before practicing.</p>
             </div>
 
-            <div class="section-title">Practice Quizzes</div>
-            <div class="dashboard-grid">
-                <div class="dash-card" onclick="switchView('hiragana')">
-                    <div class="dash-icon">あ</div>
-                    <h3>Hiragana</h3>
-                    <p>Master basic, dakuten, and combination hiragana characters.</p>
-                    <button class="primary-btn" onclick="switchView('hiragana')">Start Quiz</button>
+            <div class="dashboard-container">
+                <div class="section-title">Practice Quizzes</div>
+                <div class="dashboard-grid">
+                    <div class="dash-card" onclick="switchView('hiragana')">
+                        <div class="dash-icon">あ</div>
+                        <h3>Hiragana</h3>
+                        <p>Master basic, dakuten, and combination hiragana characters.</p>
+                        <button class="primary-btn" onclick="switchView('hiragana')">Start Quiz</button>
+                    </div>
+                    <div class="dash-card" onclick="switchView('katakana')">
+                        <div class="dash-icon">ア</div>
+                        <h3>Katakana</h3>
+                        <p>Practice basic, extended, and foreign loanword katakana.</p>
+                        <button class="primary-btn" onclick="switchView('katakana')">Start Quiz</button>
+                    </div>
+                    <div class="dash-card" onclick="switchView('numbers')">
+                        <div class="dash-icon">67</div>
+                        <h3>Numbers</h3>
+                        <p>Test your knowledge on digits 0 to 100,000 and random sets.</p>
+                        <button class="primary-btn" onclick="switchView('numbers')">Start Quiz</button>
+                    </div>
+                    <div class="dash-card" onclick="switchView('time')">
+                        <div class="dash-icon">AM</div>
+                        <h3>Clock Time</h3>
+                        <p>Practice telling time with AM/PM and half-hour variations.</p>
+                        <button class="primary-btn" onclick="switchView('time')">Start Quiz</button>
+                    </div>
                 </div>
-                <div class="dash-card" onclick="switchView('katakana')">
-                    <div class="dash-icon">ア</div>
-                    <h3>Katakana</h3>
-                    <p>Practice basic, extended, and foreign loanword katakana.</p>
-                    <button class="primary-btn" onclick="switchView('katakana')">Start Quiz</button>
-                </div>
-                <div class="dash-card" onclick="switchView('numbers')">
-                    <div class="dash-icon">67</div>
-                    <h3>Numbers</h3>
-                    <p>Test your knowledge on digits 0 to 100,000 and random sets.</p>
-                    <button class="primary-btn" onclick="switchView('numbers')">Start Quiz</button>
-                </div>
-                <div class="dash-card" onclick="switchView('time')">
-                    <div class="dash-icon">AM</div>
-                    <h3>Clock Time</h3>
-                    <p>Practice telling time with AM/PM and half-hour variations.</p>
-                    <button class="primary-btn" onclick="switchView('time')">Start Quiz</button>
-                </div>
-            </div>
 
-            <div class="section-title">Learning Resources</div>
-            <div class="dashboard-grid">
-                <a href="https://www.tofugu.com/japanese/learn-hiragana/" target="_blank" class="dash-card resource-card">
-                    <div class="dash-icon">あ</div>
-                    <h3>Hiragana Guide</h3>
-                    <p>Comprehensive guide by Tofugu (Opens in new tab) ↗</p>
-                </a>
-                <a href="https://www.tofugu.com/japanese/learn-katakana/" target="_blank" class="dash-card resource-card">
-                    <div class="dash-icon">ア</div>
-                    <h3>Katakana Guide</h3>
-                    <p>Comprehensive guide by Tofugu (Opens in new tab) ↗</p>
-                </a>
-                <a href="numbers-resource.html" class="dash-card resource-card">
-                    <div class="dash-icon">69</div>
-                    <h3>Numbers Reviewer</h3>
-                    <p>Interactive HTML reviewer converted from lesson PDF ↗</p>
-                </a>
-                <a href="time-resource.html" class="dash-card resource-card">
-                    <div class="dash-icon">PM</div>
-                    <h3>Clock Time Reviewer</h3>
-                    <p>Interactive HTML reviewer converted from lesson PDF ↗</p>
-                </a>
+                <div class="section-title">Learning Resources</div>
+                <div class="dashboard-grid">
+                    <a href="https://www.tofugu.com/japanese/learn-hiragana/" target="_blank" class="dash-card resource-card">
+                        <div class="dash-icon">あ</div>
+                        <h3>Hiragana Guide</h3>
+                        <p>Comprehensive guide by Tofugu (Opens in new tab) ↗</p>
+                    </a>
+                    <a href="https://www.tofugu.com/japanese/learn-katakana/" target="_blank" class="dash-card resource-card">
+                        <div class="dash-icon">ア</div>
+                        <h3>Katakana Guide</h3>
+                        <p>Comprehensive guide by Tofugu (Opens in new tab) ↗</p>
+                    </a>
+                    <a href="numbers-resource.html" class="dash-card resource-card">
+                        <div class="dash-icon">69</div>
+                        <h3>Numbers Reviewer</h3>
+                        <p>Interactive HTML reviewer converted from lesson PDF ↗</p>
+                    </a>
+                    <a href="time-resource.html" class="dash-card resource-card">
+                        <div class="dash-icon">PM</div>
+                        <h3>Clock Time Reviewer</h3>
+                        <p>Interactive HTML reviewer converted from lesson PDF ↗</p>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -126,8 +126,14 @@
             <h2 class="quiz-title">Numbers Practice Quiz</h2>
             <div class="controls-wrapper">
                 <div class="control-group">
+                    <span class="control-label">Set:</span>
                     <button id="btn-num-pdf" class="active" onclick="setNumbersType('pdf')">Standard Set (PDF)</button>
                     <button id="btn-num-random" onclick="setNumbersType('random')">50 Random Numbers</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Display:</span>
+                    <button id="btn-num-disp-num" class="active" onclick="setNumbersDisplayMode('num')">Numbers (1, 10)</button>
+                    <button id="btn-num-disp-jp" onclick="setNumbersDisplayMode('jpText')">Japanese (一, 十)</button>
                 </div>
                 <div class="control-group">
                     <button class="action-btn" onclick="generateNumbersQuiz()">Randomize</button>
@@ -142,8 +148,14 @@
             <h2 class="quiz-title">Clock Time Practice Quiz</h2>
             <div class="controls-wrapper">
                 <div class="control-group">
+                    <span class="control-label">Set:</span>
                     <button id="btn-time-pdf" class="active" onclick="setTimeType('pdf')">Telling Time (PDF)</button>
                     <button id="btn-time-random" onclick="setTimeType('random')">50 Random Clock Times (AM/PM)</button>
+                </div>
+                <div class="control-group">
+                    <span class="control-label">Display:</span>
+                    <button id="btn-time-disp-num" class="active"  onclick="setTimeDisplayMode('num')">Clock/Digits (1:00 AM)</button>
+                    <button id="btn-time-disp-jp" onclick="setTimeDisplayMode('jpText')">Japanese (午前1時)</button>
                 </div>
                 <div class="control-group">
                     <button class="action-btn" onclick="generateTimeQuiz()">Randomize</button>
@@ -180,7 +192,6 @@
                 </a>
             </div>
         </section>
-
     </main>
 
     <script src="script.js"></script>

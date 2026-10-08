@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clock Time Resource - Nihongo Learning</title>
+    <title>Numbers Resource - Nihongo Learning</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,10 +17,10 @@
     <!-- Collapsible Sidebar -->
     <aside id="sidebar" class="sidebar">
         <div class="sidebar-header">
+            <span>Menu</span>
             <button class="close-btn" onclick="toggleSidebar()">✕</button>
         </div>
         <nav class="sidebar-nav">
-            <!-- <button onclick="switchView('dashboard')">Dashboard</button> -->
             <button onclick="switchView('hiragana')">Hiragana Quiz</button>
             <button onclick="switchView('katakana')">Katakana Quiz</button>
             <button onclick="switchView('numbers')">Numbers Quiz</button>
@@ -30,69 +30,58 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content">
-        <h1>Clock Time & Telling Time Reviewer</h1>
+    <main>
+        <h1>Japanese Numbers Reviewer</h1>
         <p style="color: var(--text-muted); margin-bottom: 20px;">Study reference derived from Foreign Language 1 Japanese Lessons.</p>
 
-        <h2>AM & PM Indicators</h2>
+        <h2>Basic Digits (0 - 10)</h2>
         <table class="reviewer-table">
             <thead>
-                <tr><th>Period</th><th>Kanji</th><th>Romaji</th></tr>
+                <tr><th>Digit</th><th>Kanji</th><th>Romaji</th></tr>
             </thead>
             <tbody>
-                <tr><td>AM (Morning)</td><td>午前</td><td>gozen</td></tr>
-                <tr><td>PM (Afternoon/Night)</td><td>午後</td><td>gogo</td></tr>
+                <tr><td>0</td><td>零 / 丸</td><td>zero / ree / maru</td></tr>
+                <tr><td>1</td><td>一</td><td>ichi</td></tr>
+                <tr><td>2</td><td>二</td><td>ni</td></tr>
+                <tr><td>3</td><td>三</td><td>san</td></tr>
+                <tr><td>4</td><td>四</td><td>yon / shi</td></tr>
+                <tr><td>5</td><td>五</td><td>go</td></tr>
+                <tr><td>6</td><td>六</td><td>roku</td></tr>
+                <tr><td>7</td><td>七</td><td>nana / shichi</td></tr>
+                <tr><td>8</td><td>八</td><td>hachi</td></tr>
+                <tr><td>9</td><td>九</td><td>kyuu / ku</td></tr>
+                <tr><td>10</td><td>十</td><td>juu</td></tr>
             </tbody>
         </table>
 
-        <h2>Hours (時 - ji) Exceptions</h2>
+        <h2>Hundreds (百 - Hyaku) Exceptions</h2>
         <table class="reviewer-table">
             <thead>
-                <tr><th>Hour</th><th>Japanese</th><th>Romaji</th><th>Important Note</th></tr>
+                <tr><th>Number</th><th>Kanji</th><th>Romaji</th><th>Notes</th></tr>
             </thead>
             <tbody>
-                <tr><td>4 o'clock</td><td>4時</td><td>yo-ji</td><td>Not "yon-ji" or "shi-ji"</td></tr>
-                <tr><td>7 o'clock</td><td>7時</td><td>shichi-ji</td><td>Not "nana-ji"</td></tr>
-                <tr><td>9 o'clock</td><td>9時</td><td>ku-ji</td><td>Not "kyuu-ji"</td></tr>
-                <tr><td>Half Past (:30)</td><td>~時半</td><td>~ji han</td><td>Can also be read as ~ji san-juppun</td></tr>
+                <tr><td>100</td><td>百</td><td>hyaku</td><td>Standard</td></tr>
+                <tr><td>300</td><td>三百</td><td>sanbyaku</td><td>Voiced (b) sound</td></tr>
+                <tr><td>600</td><td>六百</td><td>roppyaku</td><td>Sound change (p)</td></tr>
+                <tr><td>800</td><td>八百</td><td>happyaku</td><td>Sound change (p)</td></tr>
             </tbody>
         </table>
 
-        <h2>Minutes (分 - fun / pun) Key Readings</h2>
+        <h2>Thousands (千 - Sen) & Myriads (万 - Man)</h2>
         <table class="reviewer-table">
             <thead>
-                <tr><th>Minute</th><th>Japanese</th><th>Romaji</th></tr>
+                <tr><th>Number</th><th>Kanji</th><th>Romaji</th><th>Notes</th></tr>
             </thead>
             <tbody>
-                <tr><td>1 min</td><td>1分</td><td>ippun</td></tr>
-                <tr><td>2 min</td><td>2分</td><td>nifun</td></tr>
-                <tr><td>3 min</td><td>3分</td><td>sanpun</td></tr>
-                <tr><td>4 min</td><td>4分</td><td>yonpun</td></tr>
-                <tr><td>5 min</td><td>5分</td><td>gofun</td></tr>
-                <tr><td>6 min</td><td>6分</td><td>roppun</td></tr>
-                <tr><td>7 min</td><td>7分</td><td>nanafun</td></tr>
-                <tr><td>8 min</td><td>8分</td><td>happun</td></tr>
-                <tr><td>9 min</td><td>9分</td><td>kyuufun</td></tr>
-                <tr><td>10 min</td><td>10分</td><td>juppun</td></tr>
-                <tr><td>15 min</td><td>15分</td><td>juu-gofun</td></tr>
-                <tr><td>30 min</td><td>30分</td><td>san-juppun (or 半 - han)</td></tr>
+                <tr><td>1,000</td><td>千</td><td>sen</td><td>Standard</td></tr>
+                <tr><td>3,000</td><td>三千</td><td>sanzen</td><td>Voiced (z) sound</td></tr>
+                <tr><td>8,000</td><td>八千</td><td>hassen</td><td>Sound change (ss)</td></tr>
+                <tr><td>10,000</td><td>一万</td><td>ichi-man</td><td>Myriad unit starts here</td></tr>
+                <tr><td>100,000</td><td>十万</td><td>juu-man</td><td>10 x 10,000</td></tr>
             </tbody>
         </table>
     </main>
 
     <script src="script.js"></script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japanese Clock Time Learning Resource</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="reviewer-body">
-    
 </body>
 </html>

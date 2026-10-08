@@ -85,7 +85,7 @@ const katakanaData = {
     dakuten: [
         { num: "ga", jpText: "ガ", romaji: "ga" }, { num: "gi", jpText: "ギ", romaji: "gi" },
         { num: "gu", jpText: "グ", romaji: "gu" }, { num: "ge", jpText: "ゲ", romaji: "ge" },
-        { num: "go", jpText: "ゴ", romaji: "ゴ" }, { num: "za", jpText: "ザ", romaji: "za" },
+        { num: "go", jpText: "ゴ", romaji: "go" }, { num: "za", jpText: "ザ", romaji: "za" },
         { num: "ji", jpText: "ジ", romaji: "ji/zi" }, { num: "zu", jpText: "ズ", romaji: "zu" },
         { num: "ze", jpText: "ゼ", romaji: "ze" }, { num: "zo", jpText: "ゾ", romaji: "zo" },
         { num: "da", jpText: "ダ", romaji: "da" }, { num: "ji", jpText: "ヂ", romaji: "ji/dji" },
@@ -132,25 +132,75 @@ const pdfNumbersData = [
 ];
 
 const pdfTimeData = [
-    { num: "1:00 AM", jpText: "午前1時", romaji: "gozen ichi-ji" },
-    { num: "4:00 PM", jpText: "午後4時", romaji: "gogo yo-ji" },
-    { num: "7:00 AM", jpText: "午前7時", romaji: "gozen shichi-ji" },
-    { num: "9:00 PM", jpText: "午後9時", romaji: "gogo ku-ji" },
-    { num: "12:00 PM", jpText: "午後12時", romaji: "gogo juu-ni-ji" },
-    { num: "1:30 PM", jpText: "午後1時半", romaji: "gogo ichi-ji-han/gogo ichi-ji san-juppun" },
-    { num: "4:30 AM", jpText: "午前4時半", romaji: "gozen yo-ji-han/gozen yo-ji san-juppun" },
-    { num: "8:30 PM", jpText: "午後8時半", romaji: "gogo hachi-ji-han/gogo hachi-ji san-juppun" },
-    { num: "10:15 AM", jpText: "午前10時15分", romaji: "gozen juu-ji juu-gofun" },
-    { num: "2:45 PM", jpText: "午後2時45分", romaji: "gogo ni-ji yon-juu-gofun" }
+    // --- HOURS (1:00 - 12:00) ---
+    { num: "1:00", jpText: "1時", romaji: "ichi-ji" },
+    { num: "2:00", jpText: "2時", romaji: "ni-ji" },
+    { num: "3:00", jpText: "3時", romaji: "san-ji" },
+    { num: "4:00", jpText: "4時", romaji: "yo-ji" },
+    { num: "5:00", jpText: "5時", romaji: "go-ji" },
+    { num: "6:00", jpText: "6時", romaji: "roku-ji" },
+    { num: "7:00", jpText: "7時", romaji: "shichi-ji" },
+    { num: "8:00", jpText: "8時", romaji: "hachi-ji" },
+    { num: "9:00", jpText: "9時", romaji: "ku-ji" },
+    { num: "10:00", jpText: "10時", romaji: "juu-ji" },
+    { num: "11:00", jpText: "11時", romaji: "juu-ichi-ji" },
+    { num: "12:00", jpText: "12時", romaji: "juu-ni-ji" },
+
+    // --- HALF-PAST HOURS (1:30 - 12:30) ---
+    { num: "1:30", jpText: "1時半", romaji: "ichi-ji-han" },
+    { num: "2:30", jpText: "2時半", romaji: "ni-ji-han" },
+    { num: "3:30", jpText: "3時半", romaji: "san-ji-han" },
+    { num: "4:30", jpText: "4時半", romaji: "yo-ji-han" },
+    { num: "5:30", jpText: "5時半", romaji: "go-ji-han" },
+    { num: "6:30", jpText: "6時半", romaji: "roku-ji-han" },
+    { num: "7:30", jpText: "7時半", romaji: "shichi-ji-han" },
+    { num: "8:30", jpText: "8時半", romaji: "hachi-ji-han" },
+    { num: "9:30", jpText: "9時半", romaji: "ku-ji-han" },
+    { num: "10:30", jpText: "10時半", romaji: "juu-ji-han" },
+    { num: "11:30", jpText: "11時半", romaji: "juu-ichi-ji-han" },
+    { num: "12:30", jpText: "12時半", romaji: "juu-ni-ji-han" },
+
+    // --- MINUTES (分) ---
+    { num: "1 min", jpText: "1分", romaji: "ippun" },
+    { num: "2 min", jpText: "2分", romaji: "nifun" },
+    { num: "3 min", jpText: "3分", romaji: "sanpun" },
+    { num: "4 min", jpText: "4分", romaji: "yonpun" },
+    { num: "5 min", jpText: "5分", romaji: "gofun" },
+    { num: "6 min", jpText: "6分", romaji: "roppun" },
+    { num: "7 min", jpText: "7分", romaji: "nanafun" },
+    { num: "8 min", jpText: "8分", romaji: "happun" },
+    { num: "9 min", jpText: "9分", romaji: "kyuufun" },
+    { num: "10 min", jpText: "10分", romaji: "juppun" },
+    { num: "11 min", jpText: "11分", romaji: "juu-ippun" },
+    { num: "12 min", jpText: "12分", romaji: "juu-nifun" },
+    { num: "13 min", jpText: "13分", romaji: "juu-sanpun" },
+    { num: "14 min", jpText: "14分", romaji: "juu-yonpun" },
+    { num: "15 min", jpText: "15分", romaji: "juu-gofun" },
+    { num: "16 min", jpText: "16分", romaji: "juu-roppun" },
+    { num: "17 min", jpText: "17分", romaji: "juu-nanafun" },
+    { num: "18 min", jpText: "18分", romaji: "juu-happun" },
+    { num: "19 min", jpText: "19分", romaji: "juu-kyuufun" },
+    { num: "20 min", jpText: "20分", romaji: "ni-juppun" },
+    { num: "25 min", jpText: "25分", romaji: "ni-juu-gofun" },
+    { num: "30 min", jpText: "30分", romaji: "san-juppun" },
+    { num: "35 min", jpText: "35分", romaji: "san-juu-gofun" },
+    { num: "40 min", jpText: "40分", romaji: "yon-juppun" },
+    { num: "45 min", jpText: "45分", romaji: "yon-juu-gofun" },
+    { num: "50 min", jpText: "50分", romaji: "go-juppun" },
+    { num: "55 min", jpText: "55分", romaji: "go-juu-gofun" },
+    { num: "59 min", jpText: "59分", romaji: "go-juu-kyuufun" }
 ];
 
 // --- APP STATE --- //
-let activeKanaType = 'hiragana'; // 'hiragana' or 'katakana'
-let activeKanaCategory = 'basic'; // 'basic', 'dakuten', 'youon', 'all'
-let activeKanaMode = 'full'; // 'full' or '50'
+let activeKanaType = 'hiragana';
+let activeKanaCategory = 'basic';
+let activeKanaMode = 'full';
 
-let numbersType = 'pdf'; // 'pdf' or 'random'
-let timeType = 'pdf'; // 'pdf' or 'random'
+let numbersType = 'pdf';
+let numbersDisplayMode = 'num'; // 'jpText' or 'num'
+
+let timeType = 'pdf';
+let timeDisplayMode = 'num';    // 'jpText' or 'num'
 
 let currentKanaList = [];
 let currentNumbersList = [];
@@ -158,45 +208,69 @@ let currentTimeList = [];
 
 // --- NAVIGATION & SIDEBAR --- //
 function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('open');
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+        sidebar.classList.toggle('open');
+    }
 }
 
-function switchView(viewName) {
+function switchView(viewName = 'dashboard') {
     // Check if we are currently on index.html
-    const isMainPage = window.location.pathname.endsWith('index.html') || 
-                       window.location.pathname === '/' || 
-                       window.location.pathname.endsWith('/');
+    const dashboardSection = document.getElementById('view-dashboard');
 
-    // If on a separate page (like numbers-resource.html), redirect to index.html with the target view
-    if (!isMainPage) {
+    // If on a separate page (like numbers-resource.html or time-resource.html), redirect to index.html
+    if (!dashboardSection) {
         window.location.href = `index.html?view=${viewName}`;
         return;
     }
 
-    // --- Original Single-Page Toggle Logic for index.html ---
     // Hide all view sections
-    document.querySelectorAll('.view-section').forEach(section => {
+    document.querySelectorAll('.view').forEach(section => {
+        section.classList.remove('active');
         section.style.display = 'none';
     });
 
-    // Show the selected view section
-    const targetSection = document.getElementById(viewName);
-    if (targetSection) {
-        targetSection.style.display = 'block';
-    }
-
-    // Close the sidebar automatically after selection
+    // Close sidebar
     const sidebar = document.getElementById('sidebar');
     if (sidebar) {
-        sidebar.classList.remove('active');
+        sidebar.classList.remove('open');
+    }
+
+    // Resolve target view ID and trigger appropriate quiz/view functions
+    let targetId = 'view-dashboard';
+
+    if (viewName === 'hiragana' || viewName === 'katakana') {
+        activeKanaType = viewName;
+        const titleEl = document.getElementById('kana-quiz-title');
+        if (titleEl) {
+            titleEl.textContent = viewName === 'hiragana' ? 'Hiragana Practice Quiz' : 'Katakana Practice Quiz';
+        }
+        targetId = 'view-kana';
+        generateKanaQuiz();
+    } else if (viewName === 'numbers') {
+        targetId = 'view-numbers';
+        generateNumbersQuiz();
+    } else if (viewName === 'time') {
+        targetId = 'view-time';
+        generateTimeQuiz();
+    } else if (viewName === 'resources') {
+        targetId = 'view-resources';
+    } else {
+        targetId = 'view-dashboard';
+    }
+
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+        targetSection.style.display = 'block';
     }
 }
 
-// Automatically load the view from the URL query parameter when redirecting back to index.html
+// Load view from query string or default to 'dashboard' on page load
 document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const view = urlParams.get('view');
-    if (view) {
+    if (document.getElementById('view-dashboard')) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const view = urlParams.get('view') || 'dashboard';
         switchView(view);
     }
 });
@@ -205,15 +279,18 @@ document.addEventListener('DOMContentLoaded', () => {
 function setKanaCategory(cat) {
     activeKanaCategory = cat;
     ['basic', 'dakuten', 'youon', 'all'].forEach(c => {
-        document.getElementById(`btn-kana-${c}`).classList.toggle('active', c === cat);
+        const btn = document.getElementById(`btn-kana-${c}`);
+        if (btn) btn.classList.toggle('active', c === cat);
     });
     generateKanaQuiz();
 }
 
 function setKanaMode(mode) {
     activeKanaMode = mode;
-    document.getElementById('btn-kana-mode-full').classList.toggle('active', mode === 'full');
-    document.getElementById('btn-kana-mode-50').classList.toggle('active', mode === '50');
+    const fullBtn = document.getElementById('btn-kana-mode-full');
+    const randBtn = document.getElementById('btn-kana-mode-50');
+    if (fullBtn) fullBtn.classList.toggle('active', mode === 'full');
+    if (randBtn) randBtn.classList.toggle('active', mode === '50');
     generateKanaQuiz();
 }
 
@@ -242,9 +319,20 @@ function generateKanaQuiz() {
 // --- NUMBERS QUIZ LOGIC --- //
 function setNumbersType(type) {
     numbersType = type;
-    document.getElementById('btn-num-pdf').classList.toggle('active', type === 'pdf');
-    document.getElementById('btn-num-random').classList.toggle('active', type === 'random');
+    const pdfBtn = document.getElementById('btn-num-pdf');
+    const randBtn = document.getElementById('btn-num-random');
+    if (pdfBtn) pdfBtn.classList.toggle('active', type === 'pdf');
+    if (randBtn) randBtn.classList.toggle('active', type === 'random');
     generateNumbersQuiz();
+}
+
+function setNumbersDisplayMode(mode) {
+    numbersDisplayMode = mode;
+    const jpBtn = document.getElementById('btn-num-disp-jp');
+    const numBtn = document.getElementById('btn-num-disp-num');
+    if (jpBtn) jpBtn.classList.toggle('active', mode === 'jpText');
+    if (numBtn) numBtn.classList.toggle('active', mode === 'num');
+    renderGrid('quiz-grid-numbers', currentNumbersList, numbersDisplayMode);
 }
 
 function generateNumbersQuiz() {
@@ -259,15 +347,26 @@ function generateNumbersQuiz() {
             currentNumbersList.push({ num: numStr, jpText: conv.jpText, romaji: conv.romaji });
         }
     }
-    renderGrid('quiz-grid-numbers', currentNumbersList);
+    renderGrid('quiz-grid-numbers', currentNumbersList, numbersDisplayMode);
 }
 
 // --- CLOCK TIME QUIZ LOGIC --- //
 function setTimeType(type) {
     timeType = type;
-    document.getElementById('btn-time-pdf').classList.toggle('active', type === 'pdf');
-    document.getElementById('btn-time-random').classList.toggle('active', type === 'random');
+    const pdfBtn = document.getElementById('btn-time-pdf');
+    const randBtn = document.getElementById('btn-time-random');
+    if (pdfBtn) pdfBtn.classList.toggle('active', type === 'pdf');
+    if (randBtn) randBtn.classList.toggle('active', type === 'random');
     generateTimeQuiz();
+}
+
+function setTimeDisplayMode(mode) {
+    timeDisplayMode = mode;
+    const jpBtn = document.getElementById('btn-time-disp-jp');
+    const numBtn = document.getElementById('btn-time-disp-num');
+    if (jpBtn) jpBtn.classList.toggle('active', mode === 'jpText');
+    if (numBtn) numBtn.classList.toggle('active', mode === 'num');
+    renderGrid('quiz-grid-time', currentTimeList, timeDisplayMode);
 }
 
 function generateTimeQuiz() {
@@ -283,7 +382,7 @@ function generateTimeQuiz() {
             currentTimeList.push(convertClockTimeToJapanese(hour, minute, period));
         }
     }
-    renderGrid('quiz-grid-time', currentTimeList);
+    renderGrid('quiz-grid-time', currentTimeList, timeDisplayMode);
 }
 
 // --- CONVERTERS --- //
@@ -372,23 +471,24 @@ function convertClockTimeToJapanese(hour, minute, period) {
             romajiList.push(`${pRom} ${hRom[hour]}`);
         } else {
             romajiList.push(`${pRom} ${hRom[hour]}-${mR}`);
-            romajiList.push(`${pRom} ${hRom[hour]} ${mR}`);
         }
     });
 
-    return { num: timeNum, jpText: timeJp, romaji: romajiList.join("/") };
+    return { num: timeNum, jpText: timeJp, romaji: romajiList.join(" / ") };
 }
 
 // --- UI RENDER & CHECKER --- //
-function renderGrid(containerId, items) {
+function renderGrid(containerId, items, displayKey = 'jpText') {
     const container = document.getElementById(containerId);
+    if (!container) return;
     container.innerHTML = '';
 
-    items.forEach((item, index) => {
+    items.forEach((item) => {
         const card = document.createElement('div');
         card.className = 'card';
+        const promptText = item[displayKey] || item.jpText;
         card.innerHTML = `
-            <div class="prompt-text">${item.jpText}</div>
+            <div class="prompt-text">${promptText}</div>
             <input type="text" placeholder="Romaji..." data-romaji="${item.romaji}" oninput="checkAnswer(this)">
             <div class="answer-hint">${item.romaji}</div>
         `;
