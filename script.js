@@ -281,6 +281,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// --- UTILITY FUNCTIONS --- //
+function shuffleArray(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
 // --- KANA QUIZ LOGIC --- //
 function setKanaCategory(cat) {
     activeKanaCategory = cat;
@@ -308,16 +318,16 @@ function getKanaPool() {
     return [...dataSource[activeKanaCategory]];
 }
 
-function generateKanaQuiz() {
+function generateKanaQuiz(isRandomize = false) {
     let pool = getKanaPool();
     if (activeKanaMode === '50') {
-        const shuffled = [...pool].sort(() => 0.5 - Math.random());
+        const shuffled = shuffleArray(pool);
         currentKanaList = [];
         for (let i = 0; i < 50; i++) {
             currentKanaList.push(shuffled[i % shuffled.length]);
         }
     } else {
-        currentKanaList = [...pool].sort(() => 0.5 - Math.random());
+        currentKanaList = isRandomize ? shuffleArray(pool) : [...pool];
     }
     renderGrid('quiz-grid-kana', currentKanaList);
 }
@@ -341,9 +351,9 @@ function setNumbersDisplayMode(mode) {
     renderGrid('quiz-grid-numbers', currentNumbersList, numbersDisplayMode);
 }
 
-function generateNumbersQuiz() {
+function generateNumbersQuiz(isRandomize = false) {
     if (numbersType === 'pdf') {
-        currentNumbersList = [...pdfNumbersData].sort(() => 0.5 - Math.random());
+        currentNumbersList = isRandomize ? shuffleArray(pdfNumbersData) : [...pdfNumbersData];
     } else {
         currentNumbersList = [];
         for (let i = 0; i < 50; i++) {
@@ -375,9 +385,9 @@ function setTimeDisplayMode(mode) {
     renderGrid('quiz-grid-time', currentTimeList, timeDisplayMode);
 }
 
-function generateTimeQuiz() {
+function generateTimeQuiz(isRandomize = false) {
     if (timeType === 'pdf') {
-        currentTimeList = [...pdfTimeData].sort(() => 0.5 - Math.random());
+        currentTimeList = isRandomize ? shuffleArray(pdfTimeData) : [...pdfTimeData];
     } else {
         currentTimeList = [];
         const minuteOptions = [0, 30, 0, 30, 15, 45, 10, 20, 5, 25, 35, 50, 55];
