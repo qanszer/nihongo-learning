@@ -264,6 +264,12 @@ function switchView(viewName = 'dashboard') {
         targetSection.classList.add('active');
         targetSection.style.display = 'block';
     }
+
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant' // Use 'smooth' for animated scrolling
+    });
 }
 
 // Load view from query string or default to 'dashboard' on page load
