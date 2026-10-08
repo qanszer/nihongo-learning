@@ -13,6 +13,11 @@
     --incorrect-border: #bf616a;
 }
 
+::selection {
+    background-color: var(--primary);
+    color: var(--text-color);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
