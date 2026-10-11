@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nihongo Learning - Sentences</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <button id="sidebar-toggle" class="icon-btn" onclick="toggleSidebar()">☰</button>
+        <h1 onclick="window.location.href='index.html'" class="app-title">Nihongo Learning</h1>
+    </header>
+
+    <!-- Collapsible Sidebar -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <button class="close-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <nav class="sidebar-nav">
+            <button onclick="window.location.href='index.html?view=hiragana'">Hiragana Quiz</button>
+            <button onclick="window.location.href='index.html?view=katakana'">Katakana Quiz</button>
+            <button onclick="window.location.href='index.html?view=numbers'">Numbers Quiz</button>
+            <button onclick="window.location.href='index.html?view=time'">Clock Time Quiz</button>
+            <button onclick="window.location.href='sentences.html'">Sentences Quiz</button>
+            <button onclick="window.location.href='index.html?view=resources'">Learning Resources</button>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="main-content">
+        <section class="view active">
+            <h2 class="quiz-title">Japanese Sentence Practice</h2>
+            
+            <div class="controls-wrapper">
+                <div class="control-group">
+                    <span class="control-label">Category:</span>
+                    <button id="btn-sent-sentences-kana" class="active" onclick="setSentenceCategory('sentences-kana')">Pure Sentences (Hiragana)</button>
+                    <button id="btn-sent-mixed-sentences" onclick="setSentenceCategory('mixed-sentences')">Mixed Sentences (Hiragana/Katakana)</button>
+                </div>
+
+                <div class="control-group">
+                    <span class="control-label">Prompt:</span>
+                    <button id="btn-sent-dir-jp" class="active" onclick="setSentenceDirection('normal')">Japanese → Romaji</button>
+                    <button id="btn-sent-dir-romaji" onclick="setSentenceDirection('reverse')">Romaji → Japanese</button>
+                </div>
+
+                <div class="control-group">
+                    <button class="action-btn" onclick="generateSentenceQuiz(true)">Randomize</button>
+                    <button id="btn-answers-sent" class="action-btn" onclick="toggleAnswers()">Show Answers</button>
+                </div>
+            </div>
+
+            <!-- Wide Sentence Grid -->
+            <div id="quiz-grid-sentences" class="grid sentence-grid"></div>
+
+            <!-- Bottom Controls -->
+            <div class="bottom-controls">
+                <button class="primary-btn" onclick="restartSentenceQuiz()">Restart Quiz</button>
+                <button class="action-btn" onclick="scrollToTop()">Change Options</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

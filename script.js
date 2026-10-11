@@ -1,3 +1,8 @@
+// --- SENTENCES QUIZ STATE & LOGIC --- //
+let activeSentenceCategory = 'sentences-kana';
+let activeSentenceDirection = 'normal';
+let currentSentenceList = [];
+
 // --- DATASETS --- //
 
 const hiraganaData = {
@@ -53,6 +58,58 @@ const hiraganaData = {
         { num: "ja", jpText: "じゃ", romaji: "ja/zya" }, { num: "ju", jpText: "じゅ", romaji: "ju/zyu" }, { num: "jo", jpText: "じょ", romaji: "jo/zyo" },
         { num: "bya", jpText: "びゃ", romaji: "bya" }, { num: "byu", jpText: "びゅ", romaji: "byu" }, { num: "byo", jpText: "びょ", romaji: "byo" },
         { num: "pya", jpText: "ぴゃ", romaji: "pya" }, { num: "pyu", jpText: "ぴゅ", romaji: "pyu" }, { num: "pyo", jpText: "ぴょ", romaji: "pyo" }
+    ],
+    words: [
+        { num: "neko", jpText: "ねこ", romaji: "neko" },
+        { num: "inu", jpText: "いぬ", romaji: "inu" },
+        { num: "ringo", jpText: "りんご", romaji: "ringo" },
+        { num: "sakura", jpText: "さくら", romaji: "sakura" },
+        { num: "mizu", jpText: "みず", romaji: "mizu" },
+        { num: "kuruma", jpText: "くるま", romaji: "kuruma" },
+        { num: "hon", jpText: "ほん", romaji: "hon" },
+        { num: "tsukue", jpText: "つくえ", romaji: "tsukue" },
+        { num: "isu", jpText: "いす", romaji: "isu" },
+        { num: "sakana", jpText: "さかな", romaji: "sakana" },
+        { num: "yama", jpText: "やま", romaji: "yama" },
+        { num: "kawa", jpText: "かわ", romaji: "kawa" },
+        { num: "sora", jpText: "そら", romaji: "sora" },
+        { num: "hoshi", jpText: "ほし", romaji: "hoshi" },
+        { num: "ame", jpText: "あめ", romaji: "ame" },
+        { num: "hito", jpText: "ひと", romaji: "hito" },
+        { num: "kodomo", jpText: "こども", romaji: "kodomo" },
+        { num: "ie", jpText: "いえ", romaji: "ie" },
+        { num: "heya", jpText: "へや", romaji: "heya" },
+        { num: "kaban", jpText: "かばん", romaji: "kaban" },
+        { num: "kutsu", jpText: "くつ", romaji: "kutsu" },
+        { num: "megane", jpText: "めがね", romaji: "megane" },
+        { num: "tokei", jpText: "とけい", romaji: "tokei" },
+        { num: "denwa", jpText: "でんわ", romaji: "denwa" },
+        { num: "hana", jpText: "はな", romaji: "hana" },
+        { num: "tori", jpText: "とり", romaji: "tori" },
+        { num: "uma", jpText: "うま", romaji: "uma" },
+        { num: "ushi", jpText: "うし", romaji: "ushi" },
+        { num: "buta", jpText: "ぶた", romaji: "buta" },
+        { num: "saru", jpText: "さる", romaji: "saru" },
+        { num: "kani", jpText: "かに", romaji: "kani" },
+        { num: "tako", jpText: "たこ", romaji: "tako" },
+        { num: "ika", jpText: "いか", romaji: "ika" },
+        { num: "mikan", jpText: "みかん", romaji: "mikan" },
+        { num: "suika", jpText: "すいか", romaji: "suika" },
+        { num: "ichigo", jpText: "いちご", romaji: "ichigo" },
+        { num: "nashi", jpText: "なし", romaji: "nashi" },
+        { num: "momo", jpText: "もも", romaji: "momo" },
+        { num: "yuki", jpText: "ゆき", romaji: "yuki" },
+        { num: "kaze", jpText: "かぜ", romaji: "kaze" },
+        { num: "umi", jpText: "うみ", romaji: "umi" },
+        { num: "shima", jpText: "しま", romaji: "shima" },
+        { num: "michi", jpText: "みち", romaji: "michi" },
+        { num: "machi", jpText: "まち", romaji: "machi" },
+        { num: "kuni", jpText: "くに", romaji: "kuni" },
+        { num: "densha", jpText: "でんしゃ", romaji: "densha" },
+        { num: "jitensha", jpText: "じてんしゃ", romaji: "jitensha" },
+        { num: "fune", jpText: "ふね", romaji: "fune" },
+        { num: "hikouki", jpText: "ひこうき", romaji: "hikouki" },
+        { num: "tegami", jpText: "てがみ", romaji: "tegami" }
     ]
 };
 
@@ -107,6 +164,58 @@ const katakanaData = {
         { num: "fa", jpText: "ファ", romaji: "fa" }, { num: "fi", jpText: "フィ", romaji: "fi" }, { num: "fe", jpText: "フェ", romaji: "fe" }, { num: "fo", jpText: "フォ", romaji: "fo" },
         { num: "wi", jpText: "ウィ", romaji: "wi" }, { num: "we", jpText: "ウェ", romaji: "we" }, { num: "wo", jpText: "ウォ", romaji: "wo" },
         { num: "va", jpText: "ヴァ", romaji: "va" }, { num: "vi", jpText: "ヴィ", romaji: "vi" }, { num: "ve", jpText: "ヴェ", romaji: "ve" }, { num: "vo", jpText: "ヴォ", romaji: "vo" }
+    ],
+    words: [
+        { num: "kamera", jpText: "カメラ", romaji: "kamera" },
+        { num: "koohii", jpText: "コーヒー", romaji: "koohii" },
+        { num: "terebi", jpText: "テレビ", romaji: "terebi" },
+        { num: "konpyuuta", jpText: "コンピュータ", romaji: "konpyuuta" },
+        { num: "hoteru", jpText: "ホテル", romaji: "hoteru" },
+        { num: "basu", jpText: "バス", romaji: "basu" },
+        { num: "takushii", jpText: "タクシー", romaji: "takushii" },
+        { num: "aisu", jpText: "アイス", romaji: "aisu" },
+        { num: "keeki", jpText: "ケーキ", romaji: "keeki" },
+        { num: "noto", jpText: "ノート", romaji: "noto" },
+        { num: "pen", jpText: "ペン", romaji: "pen" },
+        { num: "rajio", jpText: "ラジオ", romaji: "rajio" },
+        { num: "shatsu", jpText: "シャツ", romaji: "shatsu" },
+        { num: "sukii", jpText: "スキー", romaji: "sukii" },
+        { num: "paatii", jpText: "パーティ", romaji: "paatii" },
+        { num: "naifu", jpText: "ナイフ", romaji: "naifu" },
+        { num: "fooku", jpText: "フォーク", romaji: "fooku" },
+        { num: "supuun", jpText: "スプーン", romaji: "supuun" },
+        { num: "kopu", jpText: "コップ", romaji: "kopu" },
+        { num: "gasu", jpText: "ガス", romaji: "gasu" },
+        { num: "randoseru", jpText: "ランドセル", romaji: "randoseru" },
+        { num: "nekutai", jpText: "ネクタイ", romaji: "nekutai" },
+        { num: "jaketto", jpText: "ジャケット", romaji: "jaketto" },
+        { num: "kooto", jpText: "コート", romaji: "kooto" },
+        { num: "shuuzu", jpText: "シューズ", romaji: "shuuzu" },
+        { num: "buutsu", jpText: "ブーツ", romaji: "buutsu" },
+        { num: "sandoitchi", jpText: "サンドイッチ", romaji: "sandoitchi" },
+        { num: "hanbaagaa", jpText: "ハンバーガー", romaji: "hanbaagaa" },
+        { num: "piiza", jpText: "ピザ", romaji: "piiza" },
+        { num: "suteki", jpText: "ステーキ", romaji: "suteki" },
+        { num: "sarada", jpText: "サラダ", romaji: "sarada" },
+        { num: "suupu", jpText: "スープ", romaji: "suupu" },
+        { num: "chokoreeto", jpText: "チョコレート", romaji: "chokoreeto" },
+        { num: "kukkii", jpText: "クッキー", romaji: "kukkii" },
+        { num: "juusu", jpText: "ジュース", romaji: "juusu" },
+        { num: "biiru", jpText: "ビール", romaji: "biiru" },
+        { num: "wain", jpText: "ワイン", romaji: "wain" },
+        { num: "kiiboodo", jpText: "キーボード", romaji: "kiiboodo" },
+        { num: "mausu", jpText: "マウス", romaji: "mausu" },
+        { num: "sumaho", jpText: "スマホ", romaji: "sumaho" },
+        { num: "taburetto", jpText: "タブレット", romaji: "taburetto" },
+        { num: "netto", jpText: "ネット", romaji: "netto" },
+        { num: "geemu", jpText: "ゲーム", romaji: "geemu" },
+        { num: "anime", jpText: "アニメ", romaji: "anime" },
+        { num: "supotsu", jpText: "スポーツ", romaji: "supotsu" },
+        { num: "tenisu", jpText: "テニス", romaji: "tenisu" },
+        { num: "sakkaa", jpText: "サッカー", romaji: "sakkaa" },
+        { num: "basukettoboru", jpText: "バスケットボール", romaji: "basukettoboru" },
+        { num: "torakku", jpText: "トラック", romaji: "torakku" },
+        { num: "eakon", jpText: "エアコン", romaji: "eakon" }
     ]
 };
 
@@ -190,6 +299,29 @@ const pdfTimeData = [
     { num: "55 min", jpText: "55分", romaji: "go-juu-gofun" },
     { num: "59 min", jpText: "59分", romaji: "go-juu-kyuufun" }
 ];
+
+const sentenceData = {
+    "sentences-kana": [
+        { num: "kyou wa ii otenki desu ne", jpText: "きょうはいいおてんきですね。", romaji: "kyou wa ii otenki desu ne" },
+        { num: "watashi wa ringo ga suki desu", jpText: "わたしはりんごがすきです。", romaji: "watashi wa ringo ga suki desu" },
+        { num: "ashita wa tomodachi to ikimasu", jpText: "あしたはともだちといきます。", romaji: "ashita wa tomodachi to ikimasu" },
+        { num: "kinou wa eiga o mimashita", jpText: "きのうはえいがをみました。", romaji: "kinou wa eiga o mimashita" },
+        { num: "mainichi jikan o kakete benkyou shimasu", jpText: "まいにちじかんをかけてべんきょうします。", romaji: "mainichi jikan o kakete benkyou shimasu" },
+        { num: "otouto wa kyou mo asonde imasu", jpText: "おとうとはきょうもあそんでいます。", romaji: "otouto wa kyou mo asonde imasu" },
+        { num: "kuruma no naka wa totemo atatakai desu", jpText: "くるまのなかはとてもあたたかいです。", romaji: "kuruma no naka wa totemo atatakai desu" },
+        { num: "hana o mite kara kaerimashou", jpText: "はなをみてからかえりましょう。", romaji: "hana o mite kara kaerimashou" }
+    ],
+    "mixed-sentences": [
+        { num: "watashi wa hoteru ni ikimasu", jpText: "わたしはホテルにいきます。", romaji: "watashi wa hoteru ni ikimasu" },
+        { num: "suupaa de ringo o kaimashita", jpText: "スーパーでりんごをかいました。", romaji: "suupaa de ringo o kaimashita" },
+        { num: "kyou wa koohii o nomimasu", jpText: "きょうはコーヒーをのみます。", romaji: "kyou wa koohii o nomimasu" },
+        { num: "terebi de anime o mimashita", jpText: "テレビでアニメをみました。", romaji: "terebi de anime o mimashita" },
+        { num: "tomodachi to resutoran de gohan o tabemasu", jpText: "ともだちとレストランでごはんをたべます。", romaji: "tomodachi to resutoran de gohan o tabemasu" },
+        { num: "kamera de shashin o torimashita", jpText: "カメラでしゃしんをとりました。", romaji: "kamera de shashin o torimashita" },
+        { num: "basu de depaato e ikimashita", jpText: "バスでデパートへいきました。", romaji: "basu de depaato e ikimashita" },
+        { num: "aisu kuriimu o futatsu kudasai", jpText: "アイスクリームをふたつください。", romaji: "aisu kuriimu o futatsu kudasai" }
+    ]
+};
 
 // --- APP STATE --- //
 let activeKanaType = 'hiragana';
@@ -296,7 +428,7 @@ function shuffleArray(array) {
 // --- KANA QUIZ LOGIC --- //
 function setKanaCategory(cat) {
     activeKanaCategory = cat;
-    ['basic', 'dakuten', 'youon', 'all'].forEach(c => {
+    ['basic', 'dakuten', 'youon', 'words', 'all'].forEach(c => {
         const btn = document.getElementById(`btn-kana-${c}`);
         if (btn) btn.classList.toggle('active', c === cat);
     });
@@ -571,6 +703,103 @@ function convertClockTimeToJapanese(hour, minute, period) {
 
     return { num: timeNum, jpText: timeJp, romaji: romajiList.join(" / ") };
 }
+
+// SENTENCES LOGIC //
+function setSentenceCategory(cat) {
+    activeSentenceCategory = cat;
+    ['sentences-kana', 'mixed-sentences'].forEach(c => {
+        const btn = document.getElementById(`btn-sent-${c}`);
+        if (btn) btn.classList.toggle('active', c === cat);
+    });
+    generateSentenceQuiz(false);
+}
+
+function setSentenceDirection(dir) {
+    activeSentenceDirection = dir;
+    const jpBtn = document.getElementById('btn-sent-dir-jp');
+    const romajiBtn = document.getElementById('btn-sent-dir-romaji');
+    if (jpBtn) jpBtn.classList.toggle('active', dir === 'normal');
+    if (romajiBtn) romajiBtn.classList.toggle('active', dir === 'reverse');
+    renderSentenceGrid();
+}
+
+function generateSentenceQuiz(isRandomize = false) {
+    const pool = sentenceData[activeSentenceCategory] || [];
+    currentSentenceList = isRandomize ? shuffleArray(pool) : [...pool];
+    renderSentenceGrid();
+}
+
+function renderSentenceGrid() {
+    const container = document.getElementById('quiz-grid-sentences');
+    if (!container) return;
+    container.innerHTML = '';
+
+    currentSentenceList.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'card sentence-card';
+
+        let promptText, placeholder, answerValue, hintText;
+        if (activeSentenceDirection === 'reverse') {
+            promptText = item.num;
+            placeholder = 'Japanese sentence...';
+            answerValue = item.jpText;
+            hintText = item.jpText;
+        } else {
+            promptText = item.jpText;
+            placeholder = 'Romaji sentence...';
+            answerValue = item.romaji;
+            hintText = item.romaji;
+        }
+
+        card.innerHTML = `
+            <div class="prompt-text">${promptText}</div>
+            <input type="text" placeholder="${placeholder}" data-answer="${answerValue}" data-mode="${activeSentenceDirection}" oninput="checkSentenceAnswer(this)">
+            <div class="answer-hint">${hintText}</div>
+        `;
+        container.appendChild(card);
+    });
+
+    document.body.classList.remove('show-answers');
+}
+
+function checkSentenceAnswer(inputEl) {
+    const validAnswersRaw = inputEl.getAttribute('data-answer');
+    const mode = inputEl.getAttribute('data-mode');
+    const userInput = inputEl.value.trim();
+
+    if (userInput === '') {
+        inputEl.className = '';
+        return;
+    }
+
+    if (mode === 'reverse') {
+        if (userInput === validAnswersRaw) {
+            inputEl.className = 'correct';
+        } else {
+            inputEl.className = 'incorrect';
+        }
+    } else {
+        const userInputClean = userInput.toLowerCase().replace(/[\s-]/g, '');
+        const validAnswers = validAnswersRaw.split('/').map(a => a.toLowerCase().trim().replace(/[\s-]/g, ''));
+        if (validAnswers.includes(userInputClean)) {
+            inputEl.className = 'correct';
+        } else {
+            inputEl.className = 'incorrect';
+        }
+    }
+}
+
+function restartSentenceQuiz() {
+    generateSentenceQuiz(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Auto-initialize sentence quiz if on sentences.html
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('quiz-grid-sentences')) {
+        generateSentenceQuiz(false);
+    }
+});
 
 // --- UI RENDER & CHECKER --- //
 function renderGrid(containerId, items, displayKey = 'jpText') {
