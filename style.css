@@ -349,7 +349,7 @@ input.incorrect {
 
 .answer-hint {
     margin-top: 8px;
-    font-size: 11px; /* Slightly smaller for long romaji variations */
+    font-size: 13px; /* Slightly smaller for long romaji variations */
     color: var(--primary);
     font-weight: bold;
     height: 36px; /* Fixed height so all cards reserve identical answer space */

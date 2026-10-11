@@ -206,6 +206,8 @@ let currentKanaList = [];
 let currentNumbersList = [];
 let currentTimeList = [];
 
+let activeKanaDirection = 'normal'; // 'normal' (JP -> Romaji) or 'reverse' (Romaji -> JP)
+
 // --- NAVIGATION & SIDEBAR --- //
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
@@ -318,6 +320,15 @@ function getKanaPool() {
     return [...dataSource[activeKanaCategory]];
 }
 
+function setKanaDirection(dir) {
+    activeKanaDirection = dir;
+    const jpBtn = document.getElementById('btn-kana-dir-jp');
+    const romajiBtn = document.getElementById('btn-kana-dir-romaji');
+    if (jpBtn) jpBtn.classList.toggle('active', dir === 'normal');
+    if (romajiBtn) romajiBtn.classList.toggle('active', dir === 'reverse');
+    renderKanaGrid();
+}
+
 function generateKanaQuiz(isRandomize = false) {
     let pool = getKanaPool();
     if (activeKanaMode === '50') {
@@ -329,7 +340,75 @@ function generateKanaQuiz(isRandomize = false) {
     } else {
         currentKanaList = isRandomize ? shuffleArray(pool) : [...pool];
     }
-    renderGrid('quiz-grid-kana', currentKanaList);
+    renderKanaGrid();
+}
+
+function renderKanaGrid() {
+    const container = document.getElementById('quiz-grid-kana');
+    if (!container) return;
+    container.innerHTML = '';
+
+    currentKanaList.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        let promptText, placeholder, answerValue, hintText;
+        if (activeKanaDirection === 'reverse') {
+            promptText = item.num;       // Romaji cue (e.g., "a", "ka")
+            placeholder = 'Japanese...'; // Input placeholder
+            answerValue = item.jpText;   // Expected Japanese characters (e.g., "あ")
+            hintText = item.jpText;      // Answer hint showing Japanese character
+        } else {
+            promptText = item.jpText;    // Japanese character cue (e.g., "あ")
+            placeholder = 'Romaji...';   // Input placeholder
+            answerValue = item.romaji;   // Expected Romaji (e.g., "a")
+            hintText = item.romaji;      // Answer hint showing Romaji
+        }
+
+        card.innerHTML = `
+            <div class="prompt-text">${promptText}</div>
+            <input type="text" placeholder="${placeholder}" data-answer="${answerValue}" data-mode="${activeKanaDirection}" oninput="checkKanaAnswer(this)">
+            <div class="answer-hint">${hintText}</div>
+        `;
+        container.appendChild(card);
+    });
+
+    document.body.classList.remove('show-answers');
+}
+
+function checkKanaAnswer(inputEl) {
+    const validAnswersRaw = inputEl.getAttribute('data-answer');
+    const mode = inputEl.getAttribute('data-mode');
+    const userInput = inputEl.value.trim();
+
+    if (userInput === '') {
+        inputEl.className = '';
+        return;
+    }
+
+    if (mode === 'reverse') {
+        // Direct validation against Japanese characters (supporting slashes if multiple options exist)
+        const validAnswers = validAnswersRaw.split('/');
+        if (validAnswers.includes(userInput)) {
+            inputEl.className = 'correct';
+        } else {
+            inputEl.className = 'incorrect';
+        }
+    } else {
+        // Standard Romaji validation (stripping spaces and hyphens)
+        const userInputClean = userInput.toLowerCase().replace(/[\s-]/g, '');
+        const validAnswers = validAnswersRaw.split('/').map(a => a.toLowerCase().trim().replace(/[\s-]/g, ''));
+        if (validAnswers.includes(userInputClean)) {
+            inputEl.className = 'correct';
+        } else {
+            inputEl.className = 'incorrect';
+        }
+    }
+}
+
+function restartKanaQuiz() {
+    generateKanaQuiz(false); // Resets inputs and preserves standard sequential order if full set is chosen
+    scrollToTop();
 }
 
 // --- NUMBERS QUIZ LOGIC --- //

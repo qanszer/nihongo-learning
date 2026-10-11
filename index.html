@@ -113,11 +113,20 @@
                 </div>
 
                 <div class="control-group">
+                    <span class="control-label">Prompt:</span>
+                    <button id="btn-kana-dir-jp" class="active" onclick="setKanaDirection('normal')">Japanese → Romaji</button>
+                    <button id="btn-kana-dir-romaji" onclick="setKanaDirection('reverse')">Romaji → Japanese</button>
+                </div>
+
+                <div class="control-group">
                     <button class="action-btn" onclick="generateKanaQuiz(true)">Randomize</button>
                     <button id="btn-answers-kana" class="action-btn" onclick="toggleAnswers()">Show Answers</button>
                 </div>
             </div>
+
             <div id="quiz-grid-kana" class="grid"></div>
+
+            <!-- Bottom Controls -->
             <div class="bottom-controls">
                 <button class="primary-btn" onclick="restartKanaQuiz()">Restart Quiz</button>
                 <button class="action-btn" onclick="scrollToTop()">Change Options</button>
