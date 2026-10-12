@@ -487,7 +487,7 @@ function renderKanaGrid() {
         let promptText, placeholder, answerValue, hintText;
         if (activeKanaDirection === 'reverse') {
             promptText = item.num;       // Romaji cue (e.g., "a", "ka")
-            placeholder = 'Japanese...'; // Input placeholder
+            placeholder = 'Write on paper'; // Input placeholder
             answerValue = item.jpText;   // Expected Japanese characters (e.g., "あ")
             hintText = item.jpText;      // Answer hint showing Japanese character
         } else {
